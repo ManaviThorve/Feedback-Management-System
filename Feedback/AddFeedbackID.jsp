@@ -4,12 +4,14 @@
 
 <%! PreparedStatement ps;
 	ResultSet rs;
+	Statement stmt;
 	int rows;
 %>
 <%
 	String email=request.getParameter("email");
 	String f_id=request.getParameter("f_id");
 	String password=request.getParameter("password");
+	String table_name=email+password;
 	
 	try
 	{
@@ -22,6 +24,8 @@
 		rows=ps.executeUpdate();
 		if(rows>0)
 		{
+			stmt=con.createStatement("create table if not exists "+table_name+" (srno
+			int ");
 		%>
 			<jsp:forward page="GenerateForm.jsp">
 			<jsp:param name="dlNO" value=""/>
