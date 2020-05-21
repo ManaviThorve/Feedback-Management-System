@@ -8,7 +8,11 @@
 	int rows;
 %>
 <%
+	String msg=request.getParameter("next");
+	String check=request.getParameter("lastquestion");
+	out.println(msg);
 	String qtype=request.getParameter("type");
+	String filename=qtype+".jsp";
 	String question=request.getParameter("q1");
 	String opt1=request.getParameter("opt1");
 	String opt2=request.getParameter("opt2");
@@ -28,12 +32,10 @@
 	String insert="insert into "+table+" values(?,?,?,?,?,?)";
 	question=question.replace("?","");
 	question=question.replace(" ","_");
-	out.println(question);
 	String add_question="alter table "+table+"_answers add column "+question+" varchar(500);";
-	out.println(add_question);
 	try
 	{
-		if(question!="")
+		if(!question.equals(""))
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/feedbacksystem?serverTimezone=UTC","root","");
@@ -50,22 +52,49 @@
 			stmt=con.createStatement();
 			stmt.executeUpdate(add_question);
 		}
-		%>
-			<jsp:forward page="Radio.jsp">
+		if(check.equals("next_checkbox"))
+		{%>
+			<jsp:forward page="Checkbox.jsp">
 			<jsp:param name="table_name" value="<%=table_name%>"/>
+			<jsp:param name="msg" value="<%=msg%>"/>
 			</jsp:forward>
-		<%
-	}
-	catch(SQLIntegrityConstraintViolationException e)
-	{
-		out.println(e);
+		<%}
+		if(check.equals("next_truefalse"))
+		{%>
+			<jsp:forward page="TrueFalse.jsp">
+			<jsp:param name="table_name" value="<%=table_name%>"/>
+			<jsp:param name="msg" value="<%=msg%>"/>
+			</jsp:forward>
+		<%}
+		if(check.equals("next_textarea"))
+		{%>
+			<jsp:forward page="TextArea.jsp">
+			<jsp:param name="table_name" value="<%=table_name%>"/>
+			<jsp:param name="msg" value="<%=msg%>"/>
+			</jsp:forward>
+		<%}
+		if(check.equals("next_index"))
+		{%>
+			<jsp:forward page="index.html">
+			<jsp:param name="table_name" value="<%=table_name%>"/>
+			<jsp:param name="msg" value="<%=msg%>"/>
+			</jsp:forward>
+		<%}
+		else
+		{
+		%>
+			<jsp:forward page="<%=filename%>">
+			<jsp:param name="table_name" value="<%=table_name%>"/>
+			<jsp:param name="msg" value="<%=msg%>"/>
+			</jsp:forward>
+		<%}
 	}
 	catch(SQLSyntaxErrorException e)
 	{
 		out.println(e);
 	}
 	catch(Exception e)
-	{		
+	{
 		out.println(e);
 	}
 %>

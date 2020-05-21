@@ -21,7 +21,7 @@
 			String email=rs.getString(1);
 			email=email.replace(".","");
 			email=email.replace("@","");
-			table_name=email+f_id;
+			String table_name=email+f_id;
 	%>
 		<jsp:forward page="Form.jsp">
 		<jsp:param name="table_name" value="<%=table_name%>"/>

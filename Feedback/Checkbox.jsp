@@ -31,12 +31,12 @@ String table_name,msg;
 			</div>	
 <!--Form start--->
 <form class="form-container" name="form1" action="">
-<h1><center>Mutilple Choice Questions</center></h1><br>
+<h1><center>Checkbox</center></h1><br>
 <b><x style="color:#f1c40f;"></x></b><p>
 	<div class="form-group">
 		<b><label for="question" name="question">Question:</label></b>
 		<input type="hidden" name="table_name" value="<%=table_name%>"/>
-		<input type="hidden" name="type" value="Radio"/>
+		<input type="hidden" name="type" value="Checkbox"/>
 		<input type="hidden" name="lastquestion" value="<%=msg%>"/>
 		<input type="text" class="form-control" id="q1" name="q1" placeholder="Question" /><br>
 		<input type="text" class="form-control" id="opt1" name="opt1" placeholder="option" /><br>
@@ -46,7 +46,7 @@ String table_name,msg;
 	</div>
 	<h5>
 	<button name="add" type="submit" class="btn btn-success btn-block" style="background:#4FB9BA;" onclick="addQuestion()" />Add Mutilple Choice Question</button>
-	<button name="next" value="next_checkbox" type="submit" class="btn btn-success btn-block" style="background:#4FB9BA;" onclick="goToCheckBox()">Next</button>
+	<button name="next" value="next_truefalse" type="submit" class="btn btn-success btn-block" style="background:#4FB9BA;" onclick="formCreated()">Skip</button>
 </form>
 <!---Form end--->
 

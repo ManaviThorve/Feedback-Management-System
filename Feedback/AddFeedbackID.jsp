@@ -16,6 +16,7 @@
 	table_name=table_name.replace("@","");
 	String create_table="create table if not exists "
 	+table_name+"_answers(user varchar(500) primary key);";
+	out.println(table_name);
 	try
 	{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -38,7 +39,7 @@
 	}
 	catch(SQLIntegrityConstraintViolationException e)
 	{
-		out.println("This ID is Already Taken!");
+		out.println(e);
 	}		
 	catch(Exception e)
 	{		
