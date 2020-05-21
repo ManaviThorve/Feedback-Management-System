@@ -8,7 +8,7 @@
 	int rows;
 %>
 <%
-	String f_id=request.getParameter("f_id");
+	String table_name=request.getParameter("table_name");
 	String user=request.getParameter("email");
 	String search_email="select email from feedback_id_table where f_id="+f_id+";";
 	try

@@ -12,6 +12,10 @@
 	String f_id=request.getParameter("f_id");
 	String password=request.getParameter("password");
 	String table_name=email+f_id;
+	table_name=table_name.replace(".","");
+	table_name=table_name.replace("@","");
+	String create_table="create table if not exists "
+	+table_name+"_answers(user varchar(500) primary key);";
 	try
 	{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -23,6 +27,8 @@
 		rows=ps.executeUpdate();
 		if(rows>0)
 		{
+			stmt=con.createStatement();
+			stmt.executeUpdate(create_table);
 		%>
 			<jsp:forward page="Radio.jsp">
 			<jsp:param name="table_name" value="<%=table_name%>"/>

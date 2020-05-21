@@ -17,7 +17,6 @@
 	String table_name=request.getParameter("table_name");
 	String table=table_name.replace(".","");
 	table=table.replace("@","");
-	out.println("table:"+table);
 	String create_table="create table if not exists "
 	+table
 	+" (que varchar(500),"
@@ -27,7 +26,11 @@
 	+"opt3 varchar(102),"
 	+"opt4 varchar(104));";
 	String insert="insert into "+table+" values(?,?,?,?,?,?)";
-	
+	question=question.replace("?","");
+	question=question.replace(" ","_");
+	out.println(question);
+	String add_question="alter table "+table+"_answers add column "+question+" varchar(500);";
+	out.println(add_question);
 	try
 	{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -42,6 +45,8 @@
 		ps.setString(5,opt3);
 		ps.setString(6,opt4);
 		ps.executeUpdate();
+		stmt=con.createStatement();
+		stmt.executeUpdate(add_question);
 		%>
 			<jsp:forward page="Radio.jsp">
 			<jsp:param name="table_name" value="<%=table_name%>"/>
@@ -51,7 +56,11 @@
 	catch(SQLIntegrityConstraintViolationException e)
 	{
 		out.println(e);
-	}	
+	}
+	catch(SQLSyntaxErrorException e)
+	{
+		out.println(e);
+	}
 	catch(Exception e)
 	{		
 		out.println(e);
