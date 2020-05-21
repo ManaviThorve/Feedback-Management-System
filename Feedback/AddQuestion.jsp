@@ -33,20 +33,23 @@
 	out.println(add_question);
 	try
 	{
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/feedbacksystem?serverTimezone=UTC","root","");
-		stmt=con.createStatement();
-		stmt.executeUpdate(create_table);
-		ps=con.prepareStatement(insert);
-		ps.setString(1,question);
-		ps.setString(2,qtype);
-		ps.setString(3,opt1);
-		ps.setString(4,opt2);
-		ps.setString(5,opt3);
-		ps.setString(6,opt4);
-		ps.executeUpdate();
-		stmt=con.createStatement();
-		stmt.executeUpdate(add_question);
+		if(question!="")
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/feedbacksystem?serverTimezone=UTC","root","");
+			stmt=con.createStatement();
+			stmt.executeUpdate(create_table);
+			ps=con.prepareStatement(insert);
+			ps.setString(1,question);
+			ps.setString(2,qtype);
+			ps.setString(3,opt1);
+			ps.setString(4,opt2);
+			ps.setString(5,opt3);
+			ps.setString(6,opt4);
+			ps.executeUpdate();
+			stmt=con.createStatement();
+			stmt.executeUpdate(add_question);
+		}
 		%>
 			<jsp:forward page="Radio.jsp">
 			<jsp:param name="table_name" value="<%=table_name%>"/>
