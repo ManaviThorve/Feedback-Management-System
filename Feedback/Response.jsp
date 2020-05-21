@@ -28,9 +28,13 @@
 			ps=con.prepareStatement(update);
 			ps.setString(1,answer);
 			ps.setString(2,user);
-			ps.executeUpdate();
+			rows=ps.executeUpdate();
 			k++;
 			j--;
+		}
+		if(rows>0)
+		{
+			response.sendRedirect("ThankYou.jsp");
 		}
 	}
 	catch(SQLSyntaxErrorException e)
@@ -42,3 +46,5 @@
 		out.println(e);
 	}
 %>
+</body>
+</html>

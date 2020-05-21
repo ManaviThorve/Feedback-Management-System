@@ -6,6 +6,7 @@
 	ResultSet rs;
 	Statement stmt;
 	int rows;
+	String table_name;
 %>
 <%
 	String f_id=request.getParameter("f_id");
@@ -21,7 +22,7 @@
 			String email=rs.getString(1);
 			email=email.replace(".","");
 			email=email.replace("@","");
-			String table_name=email+f_id;
+			table_name=email+f_id;
 	%>
 		<jsp:forward page="Form.jsp">
 		<jsp:param name="table_name" value="<%=table_name%>"/>

@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-	<html lang="en">
+	<html lang="en" onclick="document.location.href='index.html'">
 		<head>
 			<title>Login</title>
 			<meta charset="utf-8">
@@ -17,23 +16,9 @@
 				<div class="col-md-4 col-sm-4 col-xs-12"></div>
 			</div>	
 <!--Form start--->
-<form class="form-container" action="DisplayFeedbacks.jsp" method="do">
-<h1><center>View Feedbacks</center></h1><br>
+<form class="form-container" "" method="do">
+<h1><center>Thank You! Your Response has been recorded!</center></h1><br>
 <b><x style="color:#f1c40f;"></x></b><p>
-	<div class="form-group">
-		<b><label for="email">Email</label></b>
-		<input type="email" class="form-control" id="email" name="email" placeholder="User Name" required/>
-	</div>
-	<div class="form-group">
-		<b><label for="email">Feedback ID</label></b>
-		<input type="number" class="form-control" id="f_id" name="f_id" placeholder="Set ID(make sure id is numeric)" required/>
-	</div>
-	<div class="form-group">
-		<b><label for="exampleInputPassword1">Password</label></b>
-		<input type="password" class="form-control" id="password" name="password" placeholder="Password" required/>
-	</div>
-	<h5>
-	<button type="submit" class="btn btn-success btn-block" style="background:#4FB9BA;">Next</button>
 </form>
 <!---Form end--->
 </div>

@@ -49,7 +49,7 @@
 				opt2=rs.getString(4);
 				opt3=rs.getString(5);
 				opt4=rs.getString(6);
-				if(qtype.equals("radio"))
+				if(qtype.equals("Radio"))
 				{%>
 				<div class="form-container" name="div"+<%=i%>" method="do">
 				<h2><center>Question <%=i%></center></h2><br>
@@ -67,6 +67,58 @@
 				<label for="radio"><%=opt3%></label></input><br><br>
 				<input type="radio"  name="answer<%=i%>" value="<%=opt4%>" required />
 				<label for="radio"><%=opt4%></label></input><br><br>
+				</div>
+				</div>
+				<%}
+				if(qtype.equals("Checkbox"))
+				{%>
+				<div class="form-container" name="div"+<%=i%>" method="do">
+				<h2><center>Question <%=i%></center></h2><br>
+				<b><x style="color:#f1c40f;"></x></b><p>
+				<div class="form-group">
+				<input type="hidden" name="user" value="<%=user%>"/>
+				<input type="hidden" name="table_name" value="<%=table_name%>"/>
+				<input type="hidden" name="question<%=i%>" value="<%=question%>"/>
+				<b><label for="ques"><%=question%></label></b><br><br>
+				<input type="checkbox"  name="answer<%=i%>" value="<%=opt1%>"/>
+				<label for="checkbox"><%=opt1%></label></input><br><br>
+				<input type="checkbox"  name="answer<%=i%>" value="<%=opt2%>"/>
+				<label for="checkbox"><%=opt2%></label></input><br><br>
+				<input type="checkbox"  name="answer<%=i%>" value="<%=opt3%>"/>
+				<label for="checkbox"><%=opt3%></label></input><br><br>
+				<input type="checkbox"  name="answer<%=i%>" value="<%=opt4%>"/>
+				<label for="checkbox"><%=opt4%></label></input><br><br>
+				</div>
+				</div>
+				<%}
+				if(qtype.equals("TrueFalse"))
+				{%>
+				<div class="form-container" name="div"+<%=i%>" method="do">
+				<h2><center>Question <%=i%></center></h2><br>
+				<b><x style="color:#f1c40f;"></x></b><p>
+				<div class="form-group">
+				<input type="hidden" name="user" value="<%=user%>"/>
+				<input type="hidden" name="table_name" value="<%=table_name%>"/>
+				<input type="hidden" name="question<%=i%>" value="<%=question%>"/>
+				<b><label for="ques"><%=question%></label></b><br><br>
+				<input type="radio" name="answer<%=i%>" value="<%=opt1%>" required />
+				<label for="radio"><%=opt1%></label></input><br><br>
+				<input type="radio"  name="answer<%=i%>" value="<%=opt2%>" required />
+				<label for="radio"><%=opt2%></label></input><br><br>
+				</div>
+				</div>
+				<%}
+				if(qtype.equals("TextArea"))
+				{%>
+				<div class="form-container" name="div"+<%=i%>" method="do">
+				<h2><center>Question <%=i%></center></h2><br>
+				<b><x style="color:#f1c40f;"></x></b><p>
+				<div class="form-group">
+				<input type="hidden" name="user" value="<%=user%>"/>
+				<input type="hidden" name="table_name" value="<%=table_name%>"/>
+				<input type="hidden" name="question<%=i%>" value="<%=question%>"/>
+				<b><label for="ques"><%=question%></label></b><br><br>
+				<input type="textarea" class="form-control" rows="200" name="answer<%=i%>" placeholder=" " required />
 				</div>
 				</div>
 				<%}
